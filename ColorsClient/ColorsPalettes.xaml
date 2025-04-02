@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ColorsClient.ViewModels"
+             xmlns:models="clr-namespace:ColorsClient.Models"
+             x:Class="ColorsClient.ColorsPalettes">
+
+    <Grid ColumnDefinitions="1*, 2*">
+        <CollectionView Grid.Column="0"
+                        ItemsSource="{Binding Palettes}"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Black" StrokeThickness="1" Padding="5" Margin="5" Background="LightGray">
+                        <VerticalStackLayout>
+                            <Label Text="Palette" FontSize="20" FontAttributes="Bold" TextColor="Black" />
+                            <CollectionView ItemsSource="{Binding Colors}"
+                                            ItemsLayout="HorizontalList">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <BoxView WidthRequest="50"
+                                                 HeightRequest="50"
+                                                 BackgroundColor="{Binding HexColor}" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <StackLayout Grid.Column="1" Padding="10" BackgroundColor="White">
+            <Label Text="Palette sélectionnée" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

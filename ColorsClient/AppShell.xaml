@@ -8,8 +8,8 @@
     Title="ColorsClient">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Colors Palettes"
+        ContentTemplate="{DataTemplate local:ColorsPalettes}"
+        Route="ColorsPalettes" />
 
 </Shell>

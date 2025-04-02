@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ColorsClient.Models;
+using ColorsClient.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace ColorsClient
 {
@@ -17,7 +19,12 @@ namespace ColorsClient
 
 #if DEBUG
     		builder.Logging.AddDebug();
+
 #endif
+            builder.Services.AddHttpClient();
+            builder.Services.AddSingleton<IColorApiService, ColorApiService>();
+            builder.Services.AddTransient<ColorPalettesViewModel>();
+            builder.Services.AddTransient<ColorsPalettes>();
 
             return builder.Build();
         }

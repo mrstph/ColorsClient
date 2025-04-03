@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ColorsClient.Models;
-using MvvmHelpers;
+using CommunityToolkit.Mvvm;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ColorsClient.ViewModels
 {
-    public partial class ColorPalettesViewModel : BaseViewModel
+    public partial class ColorPalettesViewModel : ObservableObject
     {
         private readonly IColorApiService _colorApiService;
         public ObservableCollection<ColorPaletteViewModel> Palettes { get; } = new();

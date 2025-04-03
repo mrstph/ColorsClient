@@ -15,7 +15,8 @@ namespace ColorsClient
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.LoadPalettesCommand.Execute(null);
+            if (_viewModel.Palettes.Count == 0)
+                _viewModel.LoadPalettesCommand.Execute(null);
         }
     }
 }

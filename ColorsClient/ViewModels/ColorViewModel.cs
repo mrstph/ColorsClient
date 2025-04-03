@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ColorsClient.ViewModels
 {
-    public partial class ColorViewModel
+    public class ColorViewModel
     {
         public int Type { get; set; }
         public int Red { get; set; }

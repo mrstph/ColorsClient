@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ColorsClient.ViewModels"
-             xmlns:models="clr-namespace:ColorsClient.Models"
              x:Class="ColorsClient.ColorsPalettes">
 
     <Grid ColumnDefinitions="1*, 2*">
         <CollectionView Grid.Column="0"
                         ItemsSource="{Binding Palettes}"
-                        SelectionMode="Single">
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedPalette, Mode=TwoWay}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border Stroke="Black" StrokeThickness="1" Padding="5" Margin="5" Background="LightGray">
@@ -32,7 +32,16 @@
 
         <StackLayout Grid.Column="1" Padding="10" BackgroundColor="White">
             <Label Text="Palette sélectionnée" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+
+            <CollectionView ItemsSource="{Binding SelectedPalette.Colors}"
+                            ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <BoxView HeightRequest="50"
+                                 BackgroundColor="{Binding HexColor}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </Grid>
-
 </ContentPage>

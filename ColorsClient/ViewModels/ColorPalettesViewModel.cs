@@ -6,14 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ColorsClient.Models;
+using MvvmHelpers;
 
 namespace ColorsClient.ViewModels
 {
-    public partial class ColorPalettesViewModel
+    public partial class ColorPalettesViewModel : BaseViewModel
     {
         private readonly IColorApiService _colorApiService;
         public ObservableCollection<ColorPaletteViewModel> Palettes { get; } = new();
         public ICommand LoadPalettesCommand { get; }
+
+        private ColorPaletteViewModel _selectedPalette;
+        public ColorPaletteViewModel SelectedPalette
+        {
+            get => _selectedPalette;
+            set
+            {
+                _selectedPalette = value;
+                OnPropertyChanged(nameof(SelectedPalette));
+            }
+        }
 
         public ColorPalettesViewModel(IColorApiService colorApiService)
         {
@@ -30,6 +42,9 @@ namespace ColorsClient.ViewModels
             {
                 Palettes.Add(new ColorPaletteViewModel(palette));
             }
+
+            if (Palettes.Any())
+                SelectedPalette = Palettes.First();
         }
     }
 }

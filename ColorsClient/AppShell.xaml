@@ -10,6 +10,16 @@
     <ShellContent
         Title="Colors Palettes"
         ContentTemplate="{DataTemplate local:ColorsPalettes}"
-        Route="ColorsPalettes" />
+        Route="ColorsPalettes"/>
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:Login}"
+        Route="Login"/>
+
+    <ShellContent
+        Title="Register"
+        ContentTemplate="{DataTemplate local:Register}"
+        Route="Register"/>
 
 </Shell>
